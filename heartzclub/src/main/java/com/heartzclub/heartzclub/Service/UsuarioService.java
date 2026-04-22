@@ -1,5 +1,6 @@
 package com.heartzclub.heartzclub.Service;
 
+import com.heartzclub.heartzclub.DTO.LoginDto;
 import com.heartzclub.heartzclub.DTO.UsuarioRequestDTO;
 import com.heartzclub.heartzclub.Exception.UsuarioNotFoundException;
 import com.heartzclub.heartzclub.Model.Usuario;
@@ -26,13 +27,18 @@ public class UsuarioService {
     }
 
     public Usuario criar(UsuarioRequestDTO dto) {
-        var usuario = new Usuario(dto.name(), dto.idade(), dto.cpf(), dto.endereco());
+        var usuario = new Usuario(dto.nome(),
+                dto.email(),
+                dto.idade(),
+                dto.cpf(),
+                dto.endereco(),
+                dto.senha());
         return repository.save(usuario);
     }
 
     public Usuario atualizar(Long id, UsuarioRequestDTO dto) {
         var usuario = findById(id);
-        usuario.setNome(dto.name());
+        usuario.setNome(dto.nome());
         usuario.setEndereco(dto.endereco());
         return repository.save(usuario);
     }
@@ -40,5 +46,15 @@ public class UsuarioService {
     public void deletar(Long id) {
         findById(id);
         repository.deleteById(id);
+    }
+
+    public Usuario login(LoginDto dto) {
+        var usuario = repository.findByEmail(dto.email()).orElseThrow(() -> new UsuarioNotFoundException("Usuario não encontrado"));
+
+        if (!usuario.getSenha().equals(dto.senha())) {
+            throw new RuntimeException("Email ou senha incorretas. Tente novamente");
+        }
+
+        return usuario;
     }
 }

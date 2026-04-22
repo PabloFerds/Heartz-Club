@@ -1,5 +1,6 @@
 package com.heartzclub.heartzclub.Controller;
 
+import com.heartzclub.heartzclub.DTO.LoginDto;
 import com.heartzclub.heartzclub.DTO.UsuarioRequestDTO;
 import com.heartzclub.heartzclub.Model.Usuario;
 import com.heartzclub.heartzclub.Service.UsuarioService;
@@ -22,6 +23,11 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Usuario> logar(@RequestBody @Valid LoginDto dto) {
+        return ResponseEntity.ok(service.login(dto));
     }
 
     @PostMapping

@@ -6,7 +6,10 @@ import org.hibernate.validator.constraints.br.CPF;
 
 public record UsuarioRequestDTO(
         @NotBlank(message = "Nome não pode ser vazio")
-        String name,
+        String nome,
+
+        @NotBlank(message = "Email não pode ser vazio")
+        String email,
 
         @NotNull(message = "Idade não pode ser vazio")
         Integer idade,
@@ -16,5 +19,11 @@ public record UsuarioRequestDTO(
         String cpf,
 
         @NotBlank(message = "Endereço não pode ser vazio")
-        String endereco
+        String endereco,
+
+        @NotBlank(message = "Senha não pode ser vazio")
+        String senha,
+
+        @NotBlank(message = "Senha não pode ser vazio")
+        String Confirmasenha
 ) {}
