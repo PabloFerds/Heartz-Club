@@ -1,19 +1,13 @@
-async function logar() {
-    const url = 'http://localhost:8080/api/usuarios/login';
-
-    // Captura os valores dos campos de entrada
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
+async function login(email, senha) {
+    const url = 'http://localhost:8080/api/usuarios/cadastro';
 
     try {
-        console.log("Enviando dados:", { email, senha }); // Log para depuração
-
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email, senha }) // Certifique-se de enviar "email" e "senha"
+            body: JSON.stringify({ email, senha })
         });
 
         if (!response.ok) {
@@ -23,10 +17,8 @@ async function logar() {
 
         const data = await response.json();
         console.log('Sucesso:', data);
-        alert('Login realizado com sucesso!');
 
     } catch (error) {
         console.error('Erro ao fazer login:', error);
-        alert('Erro ao fazer login. Verifique suas credenciais.');
     }
 }
