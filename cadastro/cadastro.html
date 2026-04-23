@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="styleCadastro.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,45 +20,44 @@
         <img src="" alt=""><a href=""></a>
     </header>
 
-    <form action="" method="post">
+    <form action="javascript:void(0);" method="post">
         <h1>Cadastro</h1>
 
         <div>
-            <label for="Login">Nome:</label>
+            <label for="Nome">Nome:</label>
             <input type="text" id="Nome" name="Nome" required>
         </div>
 
         <div>
-            <label for="Login">Email:</label>
-            <input type="text" id="Email" name="Email" required>
+            <label for="Email">Email:</label>
+            <input type="email" id="Email" name="Email" required>
         </div>
 
         <div>
-            <label for="Login">Idade:</label>
+            <label for="Idade">Idade:</label>
             <input type="number" id="Idade" name="Idade" required>
         </div>
 
         <div>
-            <label for="Login">CPF:</label>
+            <label for="CPF">CPF:</label>
             <input type="text" id="CPF" name="CPF" required>
         </div>
 
         <div>
-            <label for="Login">Endereço:</label>
-            <input type="text" id="Endereço" name="Endereço" required>
+            <label for="Endereço">Endereço:</label>
+            <input type="text" id="Endereco" name="Endereco" required>
         </div>
 
         <div>
             <label for="Senha">Senha:</label>
-            <input type="password" id="Senha" name="Senha" required>
+            <input type="text" id="Senha" name="Senha" required>
         </div>
         <div>
-            <label for="Senha">Confirmar Senha:</label>
-            <input type="password" id="Confirmar" name="Confirmar" required>
+            <label for="Confirmar">Confirmar Senha:</label>
+            <input type="text" id="Confirmar" name="Confirmar" required>
         </div>
 
-
-        <button type="button" onclick="login('string@gmail.com', '123')">Cadastrar</button>
+        <button type="button" onclick="cadastrar()">Cadastrar</button>
     </form>
     <footer>
 

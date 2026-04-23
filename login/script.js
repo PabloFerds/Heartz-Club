@@ -25,6 +25,9 @@ async function logar() {
         console.log('Sucesso:', data);
         alert('Login realizado com sucesso!');
 
+        window.location.href = "/home/index.html"; // Substitua pelo caminho da página de destino
+
+
     } catch (error) {
         console.error('Erro ao fazer login:', error);
         alert('Erro ao fazer login. Verifique suas credenciais.');
