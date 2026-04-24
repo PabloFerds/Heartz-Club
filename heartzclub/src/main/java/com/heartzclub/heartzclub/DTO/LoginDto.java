@@ -1,7 +1,7 @@
 package com.heartzclub.heartzclub.DTO;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+
 
 public record LoginDto(
         @NotBlank(message = "Digite o email")

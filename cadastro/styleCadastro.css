@@ -4,7 +4,44 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #0D0D0D;
+    background:
+      radial-gradient(circle at left, rgba(200,155,60,0.25), transparent 40%),
+      linear-gradient(to bottom, rgba(0,0,0,0.9), #000);
+}
+
+/* HEADER */
+.header {
+  position: absolute; /* Tira o header da centralização do flexbox */
+  top: 0;             /* Prende no topo */
+  left: 0;            /* Prende na esquerda */
+  width: 100%;        /* Faz ocupar a tela toda de um lado ao outro */
+  box-sizing: border-box; /* Garante que o padding não faça o header vazar da tela */
+  
+  display: flex;
+  justify-content: space-between; /* Nota: como você só tem a logo, o space-between não fará muito efeito até você adicionar mais itens no header */
+  align-items: center;
+  padding: 15px 40px;
+  border-bottom: 2px solid #c89b3c;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo__icon {
+  width: 30px;
+  transition: 0.3s;
+}
+
+.logo__icon:hover {
+  transform: scale(1.2);
+}
+
+.logo__text {
+  color: #c89b3c;
+  font-size: 18px;
 }
 
 form {
@@ -45,13 +82,15 @@ input {
 button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #F2CB05;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #F2B705;
 }
