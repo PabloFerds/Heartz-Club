@@ -1,13 +1,14 @@
 package com.heartzclub.heartzclub.Service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.heartzclub.heartzclub.DTO.LoginDto;
 import com.heartzclub.heartzclub.DTO.UsuarioRequestDTO;
 import com.heartzclub.heartzclub.Exception.UsuarioNotFoundException;
 import com.heartzclub.heartzclub.Model.Usuario;
 import com.heartzclub.heartzclub.Repository.UsuarioRepository;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UsuarioService {
@@ -33,6 +34,10 @@ public class UsuarioService {
                 dto.cpf(),
                 dto.endereco(),
                 dto.senha());
+        if  (dto.idade()<=0){
+            throw new IllegalArgumentException("Idade não pode ser menor que 0");
+        }
+
         return repository.save(usuario);
     }
 
