@@ -1,0 +1,17 @@
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Controller\JogoController.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Controller\UsuarioController.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\DTO\JogoRequestDTO.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\DTO\LoginDto.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\DTO\UsuarioRequestDTO.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Exception\GlobalExceptionHandler.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Exception\JogoNotFoundException.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Exception\UsuarioNotFoundException.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\HeartzclubApplication.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Model\Jogo.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Model\Usuario.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Repository\JogoRepository.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Repository\UsuarioRepository.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Service\JogoService.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Service\UsuarioService.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Utils\CPF\CPFValidatorConstraint.java
+C:\Users\pedro\Documentos\heartz\Heartz-Club\heartzclub\src\main\java\com\heartzclub\heartzclub\Utils\CPF\UsuarioCpfAnnotation.java

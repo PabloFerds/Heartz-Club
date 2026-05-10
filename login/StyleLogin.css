@@ -9,41 +9,6 @@ body {
       linear-gradient(to bottom, rgba(0,0,0,0.9), #000);
 }
 
-/* HEADER */
-.header {
-  position: absolute; /* Tira o header da centralização do flexbox */
-  top: 0;             /* Prende no topo */
-  left: 0;            /* Prende na esquerda */
-  width: 100%;        /* Faz ocupar a tela toda de um lado ao outro */
-  box-sizing: border-box; /* Garante que o padding não faça o header vazar da tela */
-  
-  display: flex;
-  justify-content: space-between; /* Nota: como você só tem a logo, o space-between não fará muito efeito até você adicionar mais itens no header */
-  align-items: center;
-  padding: 15px 40px;
-  border-bottom: 2px solid #c89b3c;
-}
-
-.header__logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo__icon {
-  width: 30px;
-  transition: 0.3s;
-}
-
-.logo__icon:hover {
-  transform: scale(1.2);
-}
-
-.logo__text {
-  color: #c89b3c;
-  font-size: 18px;
-}
-
 form {
   max-width: 1000px;
   padding: 100px;
@@ -68,10 +33,10 @@ form p {
 
 /* Estilo específico dos links (<a>) */
 form a {
-    color: #c89b3c; /* Tom de dourado que você já usa no header */
+    color: #c89b3c; 
     text-decoration: none; /* Remove o sublinhado */
     font-family: 'Press Start 2P', cursive;
-    font-size: 8px; /* Reduzi um pouco para não brigar com o botão */
+    font-size: 8px; 
     line-height: 1.5;
     transition: 0.3s;
 }
