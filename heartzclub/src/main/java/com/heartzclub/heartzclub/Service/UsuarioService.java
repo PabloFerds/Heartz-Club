@@ -28,15 +28,15 @@ public class UsuarioService {
     }
 
     public Usuario criar(UsuarioRequestDTO dto) {
+
         var usuario = new Usuario(dto.nome(),
                 dto.email(),
                 dto.idade(),
                 dto.cpf(),
                 dto.endereco(),
                 dto.senha());
-        if  (dto.idade()<=0){
-            throw new IllegalArgumentException("Idade não pode ser menor que 0");
-        }
+
+        verificaIdade(dto);
 
         return repository.save(usuario);
     }
@@ -51,6 +51,15 @@ public class UsuarioService {
     public void deletar(Long id) {
         findById(id);
         repository.deleteById(id);
+    }
+
+    private int verificaIdade(UsuarioRequestDTO dto) {
+        int idade = dto.idade();
+
+        if (dto.idade() <= 0) {
+            throw new IllegalArgumentException("Idade não pode ser menor que 0");
+        }
+        return idade;
     }
 
     public Usuario login(LoginDto dto) {

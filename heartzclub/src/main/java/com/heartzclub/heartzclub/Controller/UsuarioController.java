@@ -19,6 +19,8 @@ import com.heartzclub.heartzclub.Service.UsuarioService;
 
 import jakarta.validation.Valid;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 @RequestMapping("/api/usuarios")
@@ -28,6 +30,11 @@ public class UsuarioController {
 
     public UsuarioController(UsuarioService service) {
         this.service = service;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Usuario>> listAll() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")

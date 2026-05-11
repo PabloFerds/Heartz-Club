@@ -1,6 +1,7 @@
 package com.heartzclub.heartzclub.Model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "jogos")
