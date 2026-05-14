@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background:
+        radial-gradient(circle at left, rgba(200, 155, 60, 0.25), transparent 40%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.9), #000);
+    color: #ffffff;
+}
+
+
+
+
+.container {
+    background-color: #1e1e1e00;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra leve para dar destaque */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+p {
+    color: #d7d7d7;
+    font-size: 8px;
+    margin-bottom: 40px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* Garante que o padding não quebre a largura */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #F2CB05;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Press Start 2P', cursive;
+}
+
+button:hover {
+    background-color: #F2B705;
+}
+
+.voltar-login {
+    display: block;
+    margin-top: 15px;
+    color: #F2B705;
+    text-decoration: none;
+    font-size: 8px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.voltar-login:hover {
+    text-decoration: underline;
+}
