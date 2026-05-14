@@ -1,70 +1,86 @@
-const nav = document.getElementById("nav");
+function carregarHeader() {
 
-// PEGA USUÁRIO
-const usuario = JSON.parse(
-    localStorage.getItem("usuarioLogado")
-);
+    const nav =
+        document.getElementById("nav");
 
-// USUÁRIO LOGADO
-if (usuario) {
+    // ESPERA O HEADER EXISTIR
+    if (!nav) {
 
-    nav.innerHTML = `
+        setTimeout(carregarHeader, 100);
 
-        <a href="#" class="nav__link">
-            Jogos
-        </a>
+        return;
+    }
 
-        <div class="perfil-header">
+    // PEGA USUÁRIO
+    const usuario = JSON.parse(
+        localStorage.getItem("usuarioLogado")
+    );
 
-            <img
-                src="https://i.imgur.com/HeIi0wU.png"
-                class="foto-perfil"
-            >
+    console.log(usuario);
 
-            <span class="nome-usuario">
+    // LOGADO
+    if (usuario) {
+
+        nav.innerHTML = `
+
+            <a href="#" class="nav__link">
+                Jogos
+            </a>
+
+            <div class="perfil-header">
+
+                <a href="../perfil/perfil.html"> <img src="https://upload.wikimedia.org/wikipedia/en/9/9d/Bonzi_Buddy.png" class="foto-perfil"></a>
+
+                <a href="../perfil/perfil.html"><span class="nome-usuario">
                 ${usuario.nome}
-            </span>
+            </span></a>
 
-            <button
-                class="btn-sair"
-                onclick="logout()"
+                <button
+                    class="btn-sair"
+                    onclick="logout()"
+                >
+                    Sair
+                </button>
+
+            </div>
+        `;
+
+    } else {
+
+        // NÃO LOGADO
+        nav.innerHTML = `
+
+            <a href="#" class="nav__link">
+                Jogos
+            </a>
+
+            <a
+                href="../login/login.html"
+                class="nav__link"
             >
-                Sair
-            </button>
+                Login
+            </a>
 
-        </div>
-    `;
-
-} else {
-
-    // NÃO LOGADO
-    nav.innerHTML = `
-
-        <a href="#" class="nav__link">
-            Jogos
-        </a>
-
-        <a
-            href="/heartzclub/src/main/resources/login/login.html"
-            class="nav__link"
-        >
-            Login
-        </a>
-
-        <a
-            href="/heartzclub/src/main/resources/cadastro/cadastro.html"
-            class="nav__link"
-        >
-            Cadastro
-        </a>
-    `;
+            <a
+                href="../cadastro/cadastro.html"
+                class="nav__link"
+            >
+                Cadastro
+            </a>
+        `;
+    }
 }
 
 // LOGOUT
 function logout() {
 
-    localStorage.removeItem("usuarioLogado");
+    localStorage.removeItem(
+        "usuarioLogado"
+    );
 
     window.location.href =
-        "/heartzclub/src/main/resources/home/home.html";
+        "../home/home.html";
 }
+
+// INICIA
+carregarHeader();

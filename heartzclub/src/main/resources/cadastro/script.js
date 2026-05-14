@@ -70,12 +70,17 @@ async function cadastrar(event) {
 
         } else {
 
-            // ERRO DO BACKEND
             const erro = await response.text();
 
-            console.log(erro);
+            console.error("ERRO BACKEND:");
 
-            alert('Erro ao cadastrar: ' + erro);
+            console.error(erro);
+
+            const erroJson = JSON.parse(erro);
+
+            alert(
+                erroJson.errors[0].defaultMessage
+            );
         }
 
     } catch (error) {

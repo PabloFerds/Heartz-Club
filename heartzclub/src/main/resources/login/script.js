@@ -1,3 +1,30 @@
+// USUÁRIO FAKE PARA TESTES
+const usuarioTeste = {
+
+    id: 1,
+
+    nome: "Pablo Eduardo",
+
+    email: "pablo@gmail.com",
+
+    idade: 20,
+
+    cpf: "52998224725",
+
+    endereco: "São Paulo",
+
+    senha: "123456",
+
+};
+
+// SALVA NO LOCALSTORAGE
+localStorage.setItem(
+
+    "usuarioLogado",
+
+    JSON.stringify(usuarioTeste)
+);
+
 async function logar() {
 
     const url = 'http://localhost:8080/api/usuarios/login';

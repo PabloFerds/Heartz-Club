@@ -4,18 +4,17 @@ async function loadComponent(id, file) {
 
     const content = await response.text();
 
-    document.getElementById(id).innerHTML = content;
+    document.getElementById(id).innerHTML =
+        content;
 
-    // SE FOR O HEADER
+    // HEADER
     if (id === "header") {
 
-        // CARREGA SCRIPT HEADER
-        const script = document.createElement("script");
+        const script =
+            document.createElement("script");
 
         script.src =
-            "/heartzclub/src/main/resources/components/header.js";
-
-        script.defer = true;
+            "/heartzclub/src/main/resources/components/headerScript.js";
 
         document.body.appendChild(script);
     }

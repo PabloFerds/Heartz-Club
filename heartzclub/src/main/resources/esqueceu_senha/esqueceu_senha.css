@@ -1,93 +1,150 @@
+/* BODY */
+
 body {
-    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
     margin: 0;
+
     background:
-        radial-gradient(circle at left, rgba(200, 155, 60, 0.25), transparent 40%),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.9), #000);
-    color: #ffffff;
+        radial-gradient(circle at left,
+            rgba(200, 155, 60, 0.25),
+            transparent 40%),
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.9),
+            #000);
+
+    color: var(--white);
 }
 
-
-
+/* CONTAINER */
 
 .container {
-    background-color: #1e1e1e00;
-    padding: 30px 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Sombra leve para dar destaque */
     width: 100%;
     max-width: 400px;
+
+    padding: 40px;
+
+    border: 2px solid var(--gold);
+
+    border-radius: 16px;
+
+    background: rgba(0, 0, 0, 0.4);
+
+    backdrop-filter: blur(5px);
+
     text-align: center;
 }
+
+/* TÍTULO */
 
 h2 {
     text-align: center;
-    color: #ffffff;
+
+    color: var(--gold);
+
     margin-bottom: 10px;
-    font-family: 'Press Start 2P', cursive;
+
+    font-size: 32px;
 }
 
 p {
-    color: #d7d7d7;
-    font-size: 8px;
-    margin-bottom: 40px;
-    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+
+    color: #ccc;
+
+    font-size: 12px;
+
+    margin-bottom: 35px;
 }
+
+/* FORM */
 
 .form-group {
     text-align: left;
+
     margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
-    color: #ffffff;
-    font-weight: bold;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 10px;
+
+    margin-bottom: 8px;
+
+    color: var(--white);
+
+    font-size: 14px;
 }
+
+/* INPUT */
 
 input[type="email"] {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
+
+    padding: 12px;
+
+    border: 2px solid transparent;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    transition: 0.3s;
+
     box-sizing: border-box;
-    /* Garante que o padding não quebre a largura */
 }
+
+input[type="email"]:focus {
+    border-color: var(--gold);
+}
+
+/* BOTÃO */
 
 button {
     width: 100%;
+
     padding: 12px;
-    background-color: #F2CB05;
-    color: white;
+
     border: none;
-    border-radius: 4px;
-    font-size: 12px;
+
+    border-radius: 10px;
+
+    background: var(--gold);
+
+    color: var(--black);
+
+    font-size: 14px;
+
     cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Press Start 2P', cursive;
+
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #F2B705;
+    background: var(--gold-light);
+
+    transform: scale(1.02);
 }
+
+/* LINK */
 
 .voltar-login {
     display: block;
-    margin-top: 15px;
-    color: #F2B705;
-    text-decoration: none;
-    font-size: 8px;
-    font-family: 'Press Start 2P', cursive;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    color: var(--gold);
+
+    font-size: 12px;
+
+    transition: 0.3s;
 }
 
 .voltar-login:hover {
-    text-decoration: underline;
+    color: var(--white);
 }
