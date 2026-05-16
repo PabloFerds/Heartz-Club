@@ -3,6 +3,7 @@ function carregarHeader() {
     const nav =
         document.getElementById("nav");
 
+
     // ESPERA O HEADER EXISTIR
     if (!nav) {
 
@@ -84,3 +85,9 @@ function logout() {
 
 // INICIA
 carregarHeader();
+
+
+function pesquisar (){
+   window.location.href =
+        "../pesquisa/pesquisa.html"; 
+}
