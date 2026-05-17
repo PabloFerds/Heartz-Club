@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechStore — Produtos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Karla:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">tech<span>store</span></div>
+
+        <!--
+      Badge que indica o status da API.
+      Vai mudar de aparência via JS dependendo se a requisição
+      funcionou ou falhou.
+    -->
+        <div class="api-badge" id="apiBadge">
+            <span class="dot"></span>
+            <span id="badgeText">conectando...</span>
+        </div>
+    </header>
+
+
+    <!-- ============================================================
+       CONTEÚDO PRINCIPAL
+       ============================================================ -->
+    <main>
+
+        <div class="section-header">
+            <h1>Todos os <em>Produtos</em></h1>
+            <p>Dados consumidos em tempo real da API REST.</p>
+            <div class="endpoint-pill">
+                <span class="method">GET</span>
+                <span id="endpointUrl">http://localhost:8080/api/products</span>
+            </div>
+        </div>
+        <div class="results-count" id="resultsCount" style="display:none">
+            Exibindo <strong id="productCount">0</strong> produtos
+        </div>
+        <div class="product-grid" id="productGrid">
+            <div class="skeleton-card">
+                <div class="skeleton-img"></div>
+                <div class="skeleton-body">
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line medium"></div>
+                    <div class="skeleton-line"></div>
+                </div>
+            </div>
+            <div class="skeleton-card">
+                <div class="skeleton-img"></div>
+                <div class="skeleton-body">
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line medium"></div>
+                    <div class="skeleton-line"></div>
+                </div>
+            </div>
+            <div class="skeleton-card">
+                <div class="skeleton-img"></div>
+                <div class="skeleton-body">
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line medium"></div>
+                    <div class="skeleton-line"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
