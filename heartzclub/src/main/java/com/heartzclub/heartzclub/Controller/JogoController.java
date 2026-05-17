@@ -32,11 +32,11 @@ public class JogoController {
         return ResponseEntity.ok(jogoService.findAll());
     }
 
-    @PostMapping("/cadastro")
+    /*@PostMapping("/cadastro")
     public ResponseEntity<Jogo> criar(@RequestBody @Valid JogoRequestDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED).
                 body(jogoService.criar(dto));
-    }
+    }*/
 
     @PutMapping("/{id}")
     public ResponseEntity<Jogo> alterar(@PathVariable Long id, @RequestBody @Valid JogoRequestDTO dto) {
