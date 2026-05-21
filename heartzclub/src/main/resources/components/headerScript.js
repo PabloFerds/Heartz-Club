@@ -19,7 +19,7 @@ function carregarHeader() {
     if (usuario) {
 
         nav.innerHTML = `
-            <a href="${BASE}/home/home.html" class="nav__link">
+               <a href="${BASE}/paginaJogos/paginaJogos.html" class="nav__link"></a>
                 Jogos
             </a>
 
@@ -44,7 +44,7 @@ function carregarHeader() {
 
         // NÃO LOGADO
         nav.innerHTML = `
-            <a href="${BASE}/home/home.html" class="nav__link">
+            <a href="/heartzclub/src/main/resources/paginaJogos/paginaJogos.html" class="nav__link">
                 Jogos
             </a>
 
