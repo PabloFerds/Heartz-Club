@@ -10,6 +10,11 @@ public record JogoRequestDTO(
         String genero,
 
         @NotBlank(message = "Descrição não deve ser vazio")
-        String descricao
+        String descricao,
+
+        @NotBlank(message = "Adicione uma nota")
+        Double nota,
+
+        String imagemUrl
 ) {
 }

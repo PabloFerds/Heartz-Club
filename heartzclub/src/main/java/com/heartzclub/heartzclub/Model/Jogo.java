@@ -1,7 +1,6 @@
 package com.heartzclub.heartzclub.Model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "jogos")
@@ -20,13 +19,25 @@ public class Jogo {
     @Column(nullable = false)
     private String descricao;
 
+    @Column(nullable = false)
+    private Double nota;
+
+    @Column(nullable = false)
+    private Double mediaNotas;
+
+    @Column(nullable = false)
+    private String imagemUrl;
+
+
     public Jogo() {
     }
 
-    public Jogo(String nome, String genero, String descricao) {
+    public Jogo(String nome, String genero, String descricao, Double nota, String imagemUrl) {
         this.nome = nome;
         this.genero = genero;
         this.descricao = descricao;
+        this.nota = nota;
+        this.imagemUrl = imagemUrl;
     }
 
     public Long getId() {
@@ -55,5 +66,29 @@ public class Jogo {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Double getNota() {
+        return nota;
+    }
+
+    public void setNota(Double nota) {
+        this.nota = nota;
+    }
+
+    public Double getMediaNotas() {
+        return mediaNotas;
+    }
+
+    public void setMediaNotas(Double mediaNotas) {
+        this.mediaNotas = mediaNotas;
+    }
+
+    public String getImagemUrl() {
+        return imagemUrl;
+    }
+
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
     }
 }

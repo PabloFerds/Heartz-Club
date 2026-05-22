@@ -5,8 +5,6 @@ import org.hibernate.validator.constraints.br.CPF;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDate;
-
 public record UsuarioRequestDTO(
         @NotBlank(message = "Nome não pode ser vazio")
         String nome,
@@ -14,8 +12,8 @@ public record UsuarioRequestDTO(
         @NotBlank(message = "Email não pode ser vazio")
         String email,
 
-        @NotNull(message = "Data de nascimento não pode ser vazia")
-        LocalDate dataNascimento,
+        @NotNull(message = "Idade não pode ser vazio")
+        Integer idade,
 
         @CPF
         @NotBlank(message = "CPF não pode ser vazio")
