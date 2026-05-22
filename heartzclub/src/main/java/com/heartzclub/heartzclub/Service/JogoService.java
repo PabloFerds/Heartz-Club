@@ -13,6 +13,8 @@ public class JogoService {
 
     private final JogoRepository jogoRepository;
 
+
+
     public JogoService(JogoRepository jogoRepository) {
         this.jogoRepository = jogoRepository;
     }
@@ -25,9 +27,7 @@ public class JogoService {
     public Jogo criar(JogoRequestDTO dto) {
         var jogo = new Jogo(dto.nome(),
                 dto.genero(),
-                dto.descricao(),
-                dto.nota(),
-                dto.imagemUrl());
+                dto.descricao());
         return jogoRepository.save(jogo);
     }
 

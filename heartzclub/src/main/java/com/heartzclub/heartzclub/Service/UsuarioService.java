@@ -2,7 +2,6 @@ package com.heartzclub.heartzclub.Service;
 
 import java.util.List;
 
-import com.heartzclub.heartzclub.Exception.EmailJaCadastradoException;
 import org.springframework.stereotype.Service;
 
 import com.heartzclub.heartzclub.DTO.LoginDto;
@@ -30,20 +29,12 @@ public class UsuarioService {
 
     public Usuario criar(UsuarioRequestDTO dto) {
 
-        if (repository.existsByEmail(dto.email())) {
-            throw new EmailJaCadastradoException("Email já cadastrado.");
-        }
-
-        var usuario = new Usuario(
-                dto.nome(),
+        var usuario = new Usuario(dto.nome(),
                 dto.email(),
-                dto.idade(),
+                dto.dataNascimento(),
                 dto.cpf(),
                 dto.endereco(),
-                dto.senha()
-        );
-
-        verificaIdade(dto);
+                dto.senha());
 
         return repository.save(usuario);
     }
@@ -58,15 +49,6 @@ public class UsuarioService {
     public void deletar(Long id) {
         findById(id);
         repository.deleteById(id);
-    }
-
-    private int verificaIdade(UsuarioRequestDTO dto) {
-        int idade = dto.idade();
-
-        if (dto.idade() <= 0) {
-            throw new IllegalArgumentException("Idade não pode ser menor que 0");
-        }
-        return idade;
     }
 
     public Usuario login(LoginDto dto) {

@@ -2,7 +2,6 @@ package com.heartzclub.heartzclub.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,22 +15,26 @@ public class Publicacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // DONO DA PUBLICAÇÃO
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
 
+    // JOGO RELACIONADO AO POST
     @ManyToOne
     @JoinColumn(name = "jogo_id", nullable = false)
     private Jogo jogo;
 
-    @NotBlank
+    @NotBlank(message = "Título não pode ser vazio")
     private String titulo;
 
-    @NotBlank
+    @NotBlank(message = "Descrição não pode ser vazia")
     private String descricao;
 
+    // COMENTÁRIOS DO POST
     @OneToMany(mappedBy = "publicacao", cascade = CascadeType.ALL)
-    private List<Comentario> listComentarios = new ArrayList<>();
+    private List<Comentario> listComentarios =
+            new ArrayList<>();
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date horaPublicacao;
@@ -40,10 +43,17 @@ public class Publicacao {
     private Date horaAlteracao;
 
     public Publicacao() {
-
     }
 
-    public Publicacao(Usuario usuario, Jogo jogo, String titulo, String descricao, List<Comentario> listComentarios, Date horaPublicacao) {
+    public Publicacao(
+            Usuario usuario,
+            Jogo jogo,
+            String titulo,
+            String descricao,
+            List<Comentario> listComentarios,
+            Date horaPublicacao
+    ) {
+
         this.usuario = usuario;
         this.jogo = jogo;
         this.titulo = titulo;
@@ -96,7 +106,9 @@ public class Publicacao {
         return listComentarios;
     }
 
-    public void setListComentarios(List<Comentario> listComentarios) {
+    public void setListComentarios(
+            List<Comentario> listComentarios
+    ) {
         this.listComentarios = listComentarios;
     }
 

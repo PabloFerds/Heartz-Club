@@ -2,7 +2,8 @@ package com.heartzclub.heartzclub.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,12 +17,12 @@ public class Usuario {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     @Email
     private String email;
 
     @Column(nullable = false)
-    private Integer idade;
+    private LocalDate dataNascimento;
 
     @Column(nullable = false)
     private String cpf;
@@ -32,23 +33,23 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
-    /* adicionar seguidores e funcionalidade de seguir no perfil
-    @Column(nullable = false)
-    private List<Integer> seguidores;
+    public Usuario() {}
 
-    @Column(nullable = false)
-    private List<Usuario> seguindo;
+    @ManyToMany
+    @JoinTable(
+            name = "seguidores",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "seguindo_id")
+    )
+    private List<Usuario> seguindo = new ArrayList<>();
 
-    private List<Publicacao> publicacoes;
-    */
+    @OneToMany(mappedBy = "usuario")
+    private List<Publicacao> publicacoes = new ArrayList<>();
 
-    public Usuario() {
-    }
-
-    public Usuario(String nome, String email, Integer idade, String cpf, String endereco, String senha) {
+    public Usuario(String nome, String email, LocalDate dataNascimento, String cpf, String endereco, String senha) {
         this.nome = nome;
         this.email = email;
-        this.idade = idade;
+        this.dataNascimento = dataNascimento;
         this.cpf = cpf;
         this.endereco = endereco;
         this.senha = senha;
@@ -66,12 +67,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public Integer getIdade() {
-        return idade;
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setIdade(Integer idade) {
-        this.idade = idade;
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getCpf() {
