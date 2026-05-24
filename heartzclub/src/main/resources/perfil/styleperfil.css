@@ -105,3 +105,108 @@
 
   border-radius: 5px;
 }
+
+
+
+/* ESTILIZAÇÃO DO MODO "PERSONALIZAR PERFIL"*/
+
+/* Container do formulário de edição */
+#editarPerfilForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 450px;
+  background: rgba(0, 0, 0, 0.4); /* Fundo um pouco mais escuro para destacar */
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px dashed rgba(200, 155, 60, 0.5); /* Borda dourada sutil */
+  margin-top: 15px !important;
+}
+
+/* Ajuste dos grupos (Label + Input) */
+#editarPerfilForm .form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+/* Títulos dos campos (Labels) */
+#editarPerfilForm label {
+  color: #c89b3c; /* Dourado */
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* Campos de texto e Área de texto */
+#editarPerfilForm input,
+#editarPerfilForm textarea {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #555;
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Efeito luminoso Dourado ao clicar para digitar */
+#editarPerfilForm input:focus,
+#editarPerfilForm textarea:focus {
+  border-color: #ffb300;
+  box-shadow: 0 0 8px rgba(255, 179, 0, 0.4);
+}
+
+/* Ajuste específico para quando a área de texto (textarea) existir */
+#editarPerfilForm textarea {
+  resize: vertical; /* Permite o usuário aumentar apenas para baixo */
+  min-height: 80px;
+}
+
+/*BOTÕES DO PERFIL (Salvar, Cancelar e Personalizar)*/
+
+/* Estilo Base para os botões de ação do Perfil */
+#editarPerfilBtn, 
+#editarPerfilForm .btn-enviar {
+  background-color: #c89b3c;
+  color: #000000;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+/* Efeito Hover nos botões principais */
+#editarPerfilBtn:hover, 
+#editarPerfilForm .btn-enviar:hover {
+  background-color: #ffb300;
+  transform: translateY(-2px); /* Efeito de pular um pouquinho */
+  box-shadow: 0 4px 10px rgba(200, 155, 60, 0.3);
+}
+
+/* Botão de Cancelar (Fundo transparente, borda cinza) */
+#cancelEdit {
+  background-color: transparent;
+  color: #cccccc;
+  border: 1px solid #777777;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 10px; /* Dá um espacinho do botão Salvar */
+}
+
+/* Efeito Hover no botão de cancelar */
+#cancelEdit:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: #ffffff;
+}
