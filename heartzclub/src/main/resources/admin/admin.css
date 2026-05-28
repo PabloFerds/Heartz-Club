@@ -1,0 +1,144 @@
+.admin {
+
+    min-height: 85vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px;
+}
+
+.admin-panel {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid rgba(200,155,60,0.25);
+
+    border-radius: 20px;
+
+    padding: 40px;
+
+    backdrop-filter: blur(8px);
+}
+
+.admin-title {
+
+    color: var(--gold-light);
+
+    font-size: 40px;
+
+    margin-bottom: 10px;
+
+    text-align: center;
+}
+
+.admin-subtitle {
+
+    text-align: center;
+
+    color: #bbb;
+
+    margin-bottom: 40px;
+}
+
+.admin-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.form-group label {
+
+    color: var(--gold);
+
+    font-size: 18px;
+}
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #1b1b1b;
+
+    color: white;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border: 1px solid var(--gold);
+
+    box-shadow: 0 0 15px rgba(200,155,60,0.3);
+}
+
+.form-group textarea {
+
+    resize: none;
+
+    height: 160px;
+}
+
+.admin-button {
+
+    height: 55px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #c89b3c,
+        #f3d27a
+    );
+
+    color: #111;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.admin-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 20px rgba(200,155,60,0.5);
+}

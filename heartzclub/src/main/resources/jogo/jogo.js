@@ -1,163 +1,308 @@
- const API_BASE      = 'http://localhost:8080/api';
-    const JOGO_PAGE     = '../jogo/jogo.html';
-    const PLACEHOLDER   = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
-    width='200' height='267'
-    viewBox='0 0 200 267'%3E%3Crect
-    width='200' height='267' fill='%232a2a2a'/%3E%3Ctext x='100' y='140'
-    text-anchor='middle' fill='%23666' font-family='sans-serif' font-size='11'%3ESem capa%3C/text%3E%3C/svg%3E`;
+const API_BASE = 'http://localhost:8080/api';
 
-    // Lê o usuário logado do localStorage
-    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
+const PLACEHOLDER = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
+width='200' height='267'
+viewBox='0 0 200 267'%3E%3Crect
+width='200' height='267' fill='%232a2a2a'/%3E%3Ctext x='100' y='140'
+text-anchor='middle' fill='%23666' font-family='sans-serif'
+font-size='11'%3ESem capa%3C/text%3E%3C/svg%3E`;
 
-    // Lê o ?id= da URL
-    const params = new URLSearchParams(window.location.search);
-    const jogoId = params.get('id');
+const usuarioLogado =
+JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
 
-    /* ── Carrega dados do jogo ── */
-    async function carregarJogo() {
-      if (!jogoId) {
-        document.getElementById('game-title').textContent = 'Jogo não encontrado.';
-        return;
-      }
+const params = new URLSearchParams(window.location.search);
 
-      try {
-        const res  = await fetch(`${API_BASE}/jogos/${jogoId}`, {
-         headers: {
-          'Accept': 'application/json'
-            }
-          });
+const jogoId = params.get('id');
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const jogo = await res.json();
+async function carregarJogo() {
 
-        document.title = `${jogo.nome} | Heartz Club`;
+  if (!jogoId) {
 
-        const img = jogo.imagemUrl || PLACEHOLDER;
-        document.getElementById('banner-img').src       = img;
-        document.getElementById('banner-img').alt       = jogo.nome;
-        document.getElementById('cover-img').src        = img;
-        document.getElementById('cover-img').alt        = jogo.nome;
-        document.getElementById('game-title').textContent       = jogo.nome;
-        document.getElementById('game-description').textContent = jogo.descricao;
-        document.getElementById('stat-nota').textContent        = `${jogo.nota}/10 ⭐`;
-        document.getElementById('stat-genero').textContent      = jogo.genero;
-        document.getElementById('stat-media').textContent       = `${jogo.mediaNotas}/10`;
+    document.getElementById('game-title').textContent =
+    'Jogo não encontrado.';
 
-      } catch (err) {
-        console.error('[HeartzClub] Erro ao carregar jogo:', err);
-        document.getElementById('game-title').textContent = 'Erro ao carregar o jogo.';
-      }
+    return;
+  }
+
+  try {
+
+    const res = await fetch(`${API_BASE}/jogos/${jogoId}`);
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
     }
 
-    /* ── Carrega comentários do jogo ── */
-    async function carregarComentarios() {
-      const lista = document.getElementById('comments-list');
-      try {
-        const res      = await fetch(`${API_BASE}/comentarios-jogo/jogo/${jogoId}`, {
-         headers: {
-          'Accept': 'application/json'
-            }
-          });
+    const jogo = await res.json();
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const comentarios = await res.json();
+    document.title = `${jogo.nome} | Heartz Club`;
 
-        lista.innerHTML = '';
+    const img = jogo.imagemUrl || PLACEHOLDER;
 
-        if (comentarios.length === 0) {
-          lista.innerHTML = '<p style="color:#aaa;">Nenhum comentário ainda. Seja o primeiro!</p>';
-          return;
-        }
+    const banner =
+document.getElementById('banner-img');
 
-        comentarios.forEach(c => lista.appendChild(criarCardComentario(c)));
+const cover =
+document.getElementById('cover-img');
 
-      } catch (err) {
-        console.error('[HeartzClub] Erro ao carregar comentários:', err);
-        lista.innerHTML = '<p style="color:#e57373;">Erro ao carregar comentários.</p>';
-      }
-    }
+banner.src = img;
+cover.src = img;
 
-    /* ── Cria card de comentário ── */
-    function criarCardComentario(c) {
-      const div = document.createElement('div');
-      div.className = 'comment-card';
+banner.onerror = () => {
+    banner.src = PLACEHOLDER;
+};
 
-      const nome = c.usuario?.nome || 'Usuário';
-      const data = c.dataComentario
-        ? new Date(c.dataComentario).toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric' })
-        : '';
+cover.onerror = () => {
+    cover.src = PLACEHOLDER;
+};
 
-      // Iniciais do nome para avatar
-      const iniciais = nome.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase();
+    document.getElementById('game-title').textContent =
+    jogo.nome;
 
-      div.innerHTML = `
-        <div class="comment-header">
-          <div style="
-            width:50px; height:50px; border-radius:50%;
-            background:#c89b3c; color:#000;
-            display:flex; align-items:center; justify-content:center;
-            font-weight:bold; font-size:18px; flex-shrink:0;
-          ">${iniciais}</div>
-          <div>
-            <h3 class="comment-user">${nome}</h3>
-            <span class="comment-rating" style="color:#888; font-size:13px;">${data}</span>
-          </div>
-        </div>
-        <p class="comment-text">${c.texto}</p>
-      `;
-      return div;
-    }
+    document.getElementById('game-description').textContent =
+    jogo.descricao;
 
-    /* ── Envia comentário ── */
-    async function enviarComentario() {
-      const errorEl = document.getElementById('comment-error');
-      const input   = document.getElementById('comment-input');
-      const texto   = input.value.trim();
+    document.getElementById('stat-nota').textContent =
+    `${jogo.nota}/10 ⭐`;
 
-      errorEl.style.display = 'none';
+    document.getElementById('stat-genero').textContent =
+    jogo.genero;
 
-      if (!texto) {
-        errorEl.textContent    = 'Escreva algo antes de comentar.';
-        errorEl.style.display  = 'block';
-        return;
-      }
+    document.getElementById('stat-media').textContent =
+    `${jogo.mediaNotas}/10`;
 
-      try {
-        const res = await fetch(`${API_BASE}/comentarios-jogo`, {
-          method: 'POST',
-          headers: {
-           'Content-Type': 'application/json'
-           },
-          body: JSON.stringify({
-            texto,
-            jogoId:     Number(jogoId),
-            usuarioId:  usuarioLogado.id
-          })
-        });
+  } catch (err) {
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    console.error(err);
 
-        input.value = '';
-        // Recarrega a lista para mostrar o novo comentário
-        await carregarComentarios();
+  }
 
-      } catch (err) {
-        console.error('[HeartzClub] Erro ao enviar comentário:', err);
-        errorEl.textContent   = 'Erro ao enviar comentário. Tente novamente.';
-        errorEl.style.display = 'block';
-      }
-    }
+}
 
-    document.addEventListener('DOMContentLoaded', async () => {
-      // Exibe form de comentário só se logado
-      if (usuarioLogado) {
-        document.getElementById('comment-form-area').style.display    = 'flex';
-        document.getElementById('comment-login-notice').style.display = 'none';
-      } else {
-        document.getElementById('comment-form-area').style.display    = 'none';
-        document.getElementById('comment-login-notice').style.display = 'block';
-      }
+async function favoritarJogo() {
 
-      await carregarJogo();
-      await carregarComentarios();
+  if (!usuarioLogado) {
+    alert('Faça login.');
+    return;
+  }
+
+  try {
+
+    const response = await fetch(`${API_BASE}/favoritos`, {
+
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify({
+        usuarioId: usuarioLogado.id,
+        jogoId: Number(jogoId)
+      })
+
     });
+
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    alert('Jogo favoritado!');
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert('Erro ao favoritar.');
+
+  }
+
+}
+
+async function marcarComoJogado() {
+
+  if (!usuarioLogado) {
+    alert('Faça login.');
+    return;
+  }
+
+  try {
+
+    const response = await fetch(`${API_BASE}/jogados`, {
+
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify({
+        usuarioId: usuarioLogado.id,
+        jogoId: Number(jogoId)
+      })
+
+    });
+
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    alert('Jogo marcado como jogado!');
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert('Erro ao salvar.');
+
+  }
+
+}
+
+async function avaliarJogo() {
+
+  if (!usuarioLogado) {
+    alert('Faça login.');
+    return;
+  }
+
+  const nota = prompt('Digite uma nota de 0 a 10');
+
+  if (!nota) return;
+
+  try {
+
+    const response = await fetch(`${API_BASE}/avaliacoes`, {
+
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify({
+
+        usuarioId: usuarioLogado.id,
+        jogoId: Number(jogoId),
+        nota: Number(nota)
+
+      })
+
+    });
+
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    alert('Avaliação enviada!');
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert('Erro ao avaliar.');
+
+  }
+
+}
+
+async function carregarComentarios() {
+
+  const lista = document.getElementById('comments-list');
+
+  try {
+
+    const res = await fetch(
+      `${API_BASE}/comentarios-jogo/jogo/${jogoId}`
+    );
+
+    const comentarios = await res.json();
+
+    lista.innerHTML = '';
+
+    comentarios.forEach(c => {
+
+      lista.innerHTML += `
+        <div class="comment-card">
+
+          <div class="comment-header">
+
+            <h3>${c.usuario.nome}</h3>
+
+          </div>
+
+          <p class="comment-text">
+            ${c.texto}
+          </p>
+
+        </div>
+      `;
+
+    });
+
+  } catch (err) {
+
+    console.error(err);
+
+  }
+
+}
+
+async function enviarComentario() {
+
+  const input = document.getElementById('comment-input');
+
+  const texto = input.value.trim();
+
+  if (!texto) return;
+
+  try {
+
+    await fetch(`${API_BASE}/comentarios-jogo`, {
+
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify({
+
+        texto,
+        jogoId: Number(jogoId),
+        usuarioId: usuarioLogado.id
+
+      })
+
+    });
+
+    input.value = '';
+
+    carregarComentarios();
+
+  } catch (err) {
+
+    console.error(err);
+
+  }
+
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+
+  if (usuarioLogado) {
+
+    document.getElementById('comment-form-area').style.display =
+    'flex';
+
+  } else {
+
+    document.getElementById('comment-login-notice').style.display =
+    'block';
+
+  }
+
+  await carregarJogo();
+
+  await carregarComentarios();
+
+});

@@ -1,8 +1,8 @@
+const PLACEHOLDER =
+"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23181818'/%3E%3Ccircle cx='150' cy='200' r='70' fill='%23262626' stroke='%23c89b3c' stroke-width='6'/%3E%3Ctext x='150' y='225' font-size='90' text-anchor='middle' fill='%23c89b3c' font-family='Arial' font-weight='bold'%3E?%3C/text%3E%3C/svg%3E";
+
 const API_BASE =
     'http://localhost:8080/api';
-
-const PLACEHOLDER =
-    'https://placehold.co/300x400?text=Sem+Capa';
 
 const gamesContainer =
     document.getElementById('games-container');
@@ -23,6 +23,7 @@ async function carregarJogos() {
             <p class="loading">
                 Carregando jogos...
             </p>
+
         `;
 
         const response =
@@ -38,10 +39,6 @@ async function carregarJogos() {
         const jogos =
             await response.json();
 
-        console.log(
-            JSON.stringify(jogos, null, 2)
-        );
-
         todosJogos = jogos;
 
         renderizarJogos(jogos);
@@ -55,6 +52,7 @@ async function carregarJogos() {
             <p class="loading">
                 Erro ao carregar jogos.
             </p>
+
         `;
     }
 }
@@ -73,6 +71,7 @@ function renderizarJogos(jogos) {
             <p class="loading">
                 Nenhum jogo encontrado.
             </p>
+
         `;
 
         return;
@@ -102,13 +101,29 @@ function renderizarJogos(jogos) {
         card.className =
             'game-card';
 
-        card.innerHTML = `
+        /* IMAGEM */
 
-            <img
-                src="${imagem}"
-                class="game-card__img"
-                alt="${nome}"
-            >
+        const imagemElemento =
+            document.createElement('img');
+
+        imagemElemento.src =
+            imagem;
+
+        imagemElemento.className =
+            'game-card__img';
+
+        imagemElemento.alt =
+            nome;
+
+        imagemElemento.onerror = () => {
+
+            imagemElemento.src =
+                PLACEHOLDER;
+        };
+
+        /* CONTEÚDO */
+
+        card.innerHTML = `
 
             <div class="game-card__content">
 
@@ -134,7 +149,10 @@ function renderizarJogos(jogos) {
                 </button>
 
             </div>
+
         `;
+
+        card.prepend(imagemElemento);
 
         gamesContainer.appendChild(card);
     });
@@ -167,9 +185,12 @@ function pesquisarJogos() {
                 .toLowerCase();
 
             return (
+
                 nome.includes(termo)
                 ||
+
                 genero.includes(termo)
+
             );
         });
 

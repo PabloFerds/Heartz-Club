@@ -113,8 +113,23 @@ body {
 
 
 .header__nav {
-  display: flex;
-  gap: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+}
+
+.perfil-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
 }
 
 .nav__link {
@@ -286,4 +301,178 @@ body {
   padding: 25px;
   border-radius: 10px;
   margin-top: 20px;
+}
+.header__search {
+
+    position: relative;
+
+    width: 400px;
+
+}
+
+.search__input {
+
+    width: 100%;
+
+    padding: 14px 18px;
+
+    border-radius: 14px;
+
+    border: none;
+
+    outline: none;
+
+    background: #1e1e1e;
+
+    color: white;
+
+    font-size: 15px;
+
+}
+
+.search-results {
+
+    position: absolute;
+
+    top: 60px;
+
+    left: 0;
+
+    width: 100%;
+
+    background: #181818;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    display: none;
+
+    flex-direction: column;
+
+    z-index: 999;
+
+    border: 1px solid #2c2c2c;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+}
+
+.search-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+.search-item:hover {
+
+    background: #252525;
+
+}
+
+.search-item img {
+
+    width: 50px;
+
+    height: 70px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+}
+
+.search-item-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.search-item-title {
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+}
+
+.search-item-genre {
+
+    color: #999;
+
+    font-size: 13px;
+
+}
+.search__button {
+
+    position: absolute;
+
+    right: 8px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #c89b3c,
+        #f3d27a
+    );
+
+    color: #111;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+    box-shadow:
+        0 4px 12px rgba(200,155,60,0.25);
+
+}
+
+.search__button:hover {
+
+    transform:
+        translateY(-50%)
+        scale(1.08);
+
+    box-shadow:
+        0 0 18px rgba(200,155,60,0.6);
+
+}
+
+.search__button svg {
+
+    width: 18px;
+
+    height: 18px;
+
 }
