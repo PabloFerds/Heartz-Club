@@ -79,43 +79,26 @@ cover.onerror = () => {
 }
 
 async function favoritarJogo() {
-
-  if (!usuarioLogado) {
-    alert('Faça login.');
-    return;
-  }
-
-  try {
-
-    const response = await fetch(`${API_BASE}/favoritos`, {
-
-      method: 'POST',
-
-      headers: {
-        'Content-Type': 'application/json'
-      },
-
-      body: JSON.stringify({
-        usuarioId: usuarioLogado.id,
-        jogoId: Number(jogoId)
-      })
-
-    });
-
-    if (!response.ok) {
-      throw new Error();
+    if (!usuarioLogado) {
+        alert('Faça login.');
+        return;
     }
 
-    alert('Jogo favoritado!');
+    const response = await fetch(`${API_BASE}/jogos/${jogoId}/favoritos/${usuarioLogado.id}`, {
+        method: 'POST'
+    });
 
-  } catch (err) {
+    if (response.status === 409) {
+        alert('Jogo já está nos favoritos!');
+        return;
+    }
 
-    console.error(err);
+    if (!response.ok) {
+        alert('Erro ao favoritar.');
+        return;
+    }
 
-    alert('Erro ao favoritar.');
-
-  }
-
+    alert('Jogo favoritado! ❤️');
 }
 
 async function marcarComoJogado() {

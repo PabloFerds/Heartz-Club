@@ -38,16 +38,7 @@ function carregarHeader() {
         Jogos
     </a>
 
-    <div class="perfil-header">
 
-        <a href="${BASE}/perfil/perfil.html">
-
-            <img
-                src="https://upload.wikimedia.org/wikipedia/en/9/9d/Bonzi_Buddy.png"
-                class="foto-perfil"
-            >
-
-        </a>
 
         <a href="${BASE}/perfil/perfil.html">
 

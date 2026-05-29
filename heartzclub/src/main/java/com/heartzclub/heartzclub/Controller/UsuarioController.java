@@ -1,5 +1,6 @@
 package com.heartzclub.heartzclub.Controller;
 
+import com.heartzclub.heartzclub.Model.Jogo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,6 +28,7 @@ import java.util.List;
 public class UsuarioController {
 
     private final UsuarioService service;
+
 
     public UsuarioController(UsuarioService service) {
         this.service = service;
@@ -61,5 +63,18 @@ public class UsuarioController {
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         service.deletar(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{usuarioId}/favoritos/{jogoId}")
+    public ResponseEntity<Usuario> adicionarFavorito(@PathVariable Long usuarioId, @PathVariable Long jogoId) {
+
+        Usuario atualizado = service.adicionarFavorito(usuarioId, jogoId);
+        return ResponseEntity.ok(atualizado);
+    }
+
+    @GetMapping("/{id}/favoritos")
+    public ResponseEntity<List<Jogo>> listarFavoritos(@PathVariable Long id) {
+        Usuario usuario = service.findById(id);
+        return ResponseEntity.ok(usuario.getFavoritos());
     }
 }

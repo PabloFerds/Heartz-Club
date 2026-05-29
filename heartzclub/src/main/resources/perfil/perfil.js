@@ -272,80 +272,56 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function carregarFavoritos() {
+    const ul = document.getElementById('favoritos-list');
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
 
-  const ul =
-  document.getElementById('favoritos-list');
+    if (!usuario) return;
 
-  const usuario =
-  JSON.parse(localStorage.getItem('usuarioLogado'));
+    try {
+        const response = await fetch(`${API_BASE}/usuarios/${usuario.id}/favoritos`);
 
-  if (!usuario) return;
+        if (!response.ok) throw new Error();
 
-  try {
+        const favoritos = await response.json();
 
-    const response = await fetch(
-      `${API_BASE}/favoritos/usuario/${usuario.id}`
-    );
+        ul.innerHTML = '';
 
-    if (!response.ok) {
-      throw new Error();
+        if (!favoritos || favoritos.length === 0) {
+            ul.innerHTML = `
+                <p class="empty-message">
+                    Você ainda não possui jogos favoritos.
+                    Seus jogos aparecerão aqui após favoritar 🎮
+                </p>
+            `;
+            return;
+        }
+
+        favoritos.forEach(jogo => {
+            ul.innerHTML += `
+                <li class="game">
+                    <a href="../jogo/jogo.html?id=${jogo.id}">
+                        <img src="${jogo.imagemUrl}" alt="${jogo.nome}">
+                        <span>${jogo.nome}</span>
+                    </a>
+                </li>
+            `;
+        });
+
+    } catch (err) {
+        console.error(err);
+        ul.innerHTML = `<p class="empty-message">Erro ao carregar favoritos.</p>`;
     }
+}
 
-    const favoritos =
-    await response.json();
+  async function adicionarFavorito(usuarioId, jogoId) {
+      const response = await fetch(`/usuarios/${usuarioId}/favoritos/${jogoId}`, {
+          method: 'POST',
+      });
 
-    ul.innerHTML = '';
+      if (!response.ok) {
+          const erro = await response.text();
+          throw new Error(erro); // ex: "Jogo não encontrado" ou "Já é favorito"
+      }
 
-    if (!favoritos || favoritos.length === 0) {
-
-      ul.innerHTML = `
-
-        <p class="empty-message">
-
-          Você ainda não possui jogos favoritos.
-
-          Seus jogos aparecerão aqui
-          após favoritar 🎮
-
-        </p>
-
-      `;
-
-      return;
-    }
-
-    favoritos.forEach(f => {
-
-      const jogo = f.jogo;
-
-      ul.innerHTML += `
-
-        <li class="game">
-
-          <a href="../jogo/jogo.html?id=${jogo.id}">
-
-           f.jogo.imagemUrl
-
-          </a>
-
-        </li>
-
-      `;
-
-    });
-
-  } catch (err) {
-
-    console.error(err);
-
-    ul.innerHTML = `
-
-      <p class="empty-message">
-        Erro ao carregar favoritos.
-      </p>
-
-    `;
-
+      return response.json(); // retorna o usuário atualizado com a lista de favoritos
   }
-
-} 

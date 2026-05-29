@@ -3,6 +3,9 @@ package com.heartzclub.heartzclub.Service;
 import java.util.List;
 
 import com.heartzclub.heartzclub.Exception.EmailJaCadastradoException;
+import com.heartzclub.heartzclub.Exception.JogoNotFoundException;
+import com.heartzclub.heartzclub.Model.Jogo;
+import com.heartzclub.heartzclub.Repository.JogoRepository;
 import org.springframework.stereotype.Service;
 
 import com.heartzclub.heartzclub.DTO.LoginDto;
@@ -16,8 +19,11 @@ public class UsuarioService {
 
     private final UsuarioRepository repository;
 
-    public UsuarioService(UsuarioRepository repository) {
+    private final JogoRepository jogoRepository;
+
+    public UsuarioService(UsuarioRepository repository, JogoRepository jogoRepository) {
         this.repository = repository;
+        this.jogoRepository = jogoRepository;
     }
 
     public List<Usuario> findAll() {
@@ -77,5 +83,19 @@ public class UsuarioService {
         }
 
         return usuario;
+    }
+
+    public Usuario adicionarFavorito(long usuarioId, long jogoId) {
+        Usuario usuario = findById(usuarioId);
+
+        Jogo jogo = jogoRepository.findById(jogoId).
+                orElseThrow(() -> new JogoNotFoundException(jogoId));
+
+        if (usuario.getFavoritos().contains(jogo)) {
+            throw new IllegalStateException("Jogo já está na lista de favoritos.");
+        }
+
+        usuario.adicionarFavorito(jogo);
+        return repository.save(usuario);
     }
 }
