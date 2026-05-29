@@ -46,13 +46,7 @@ public class DataInitializer implements CommandLineRunner {
                 "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png"
         );
 
-        salvar(
-                "Minecraft",
-                "Sandbox e Sobrevivência",
-                "Um jogo de construção e exploração em blocos que se tornou um fenômeno global, permitindo criatividade ilimitada.",
-                9.5,
-                "https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png"
-        );
+       
 
         salvar(
                 "The Legend of Zelda: Breath of the Wild",
@@ -109,30 +103,7 @@ public class DataInitializer implements CommandLineRunner {
                 8.9,
                 "https://upload.wikimedia.org/wikipedia/en/b/ba/Valorant_cover.jpg"
         );
-        salvar(
-        "League of Legends",
-        "MOBA",
-        "Jogo competitivo da Riot Games onde duas equipes batalham para destruir a base inimiga usando campeões com habilidades únicas.",
-        8.7,
-        "https://upload.wikimedia.org/wikipedia/en/7/77/League_of_Legends_logo.png"
-);
-
-salvar(
-        "Resident Evil 4 Remake",
-        "Terror e Ação",
-        "Leon Kennedy enfrenta uma vila infestada em uma reimaginação moderna do clássico survival horror.",
-        9.4,
-        "https://upload.wikimedia.org/wikipedia/en/d/df/Resident_Evil_4_remake_cover.jpg"
-);
-
-salvar(
-        "Hollow Knight",
-        "Metroidvania",
-        "Explore o reino subterrâneo de Hallownest em uma aventura desafiadora e atmosférica.",
-        9.3,
-        "https://upload.wikimedia.org/wikipedia/en/0/04/Hollow_Knight_first_cover_art.webp"
-);
-
+      
 salvar(
         "Dark Souls III",
         "RPG de Ação",
@@ -165,93 +136,8 @@ salvar(
         "https://upload.wikimedia.org/wikipedia/en/b/b6/Ghost_of_Tsushima.jpg"
 );
 
-salvar(
-        "Spider-Man 2",
-        "Ação e Super-herói",
-        "Peter Parker e Miles Morales enfrentam novas ameaças em Nova York.",
-        9.2,
-        "https://upload.wikimedia.org/wikipedia/en/e/ef/Marvel%27s_Spider-Man_2_cover_art.jpg"
-);
 
-salvar(
-        "The Last of Us Part II",
-        "Ação e Drama",
-        "Uma jornada emocional de vingança e sobrevivência em um mundo pós-apocalíptico.",
-        9.1,
-        "https://upload.wikimedia.org/wikipedia/en/4/4f/The_Last_of_Us_Part_II_cover_art.jpg"
-);
 
-salvar(
-        "FIFA 24",
-        "Esporte",
-        "Simulador de futebol com licenças oficiais e modos competitivos online.",
-        8.4,
-        "https://upload.wikimedia.org/wikipedia/en/e/e7/EA_Sports_FC_24_cover.jpg"
-);
-
-salvar(
-        "EA Sports FC 25",
-        "Esporte",
-        "Nova geração do simulador de futebol da EA Sports com gráficos aprimorados.",
-        8.5,
-        "https://upload.wikimedia.org/wikipedia/en/e/e7/EA_Sports_FC_24_cover.jpg"
-);
-
-salvar(
-        "Rocket League",
-        "Esporte e Corrida",
-        "Carros impulsionados jogando futebol em partidas rápidas e competitivas.",
-        8.8,
-        "https://upload.wikimedia.org/wikipedia/en/e/e0/Rocket_League_coverart.jpg"
-);
-
-salvar(
-        "Overwatch 2",
-        "FPS Hero Shooter",
-        "Shooter competitivo da Blizzard focado em trabalho em equipe e heróis únicos.",
-        8.3,
-        "https://upload.wikimedia.org/wikipedia/en/8/80/Overwatch_2_Steam_artwork.jpg"
-);
-
-salvar(
-        "Apex Legends",
-        "Battle Royale",
-        "Battle Royale dinâmico com personagens que possuem habilidades especiais.",
-        8.7,
-        "https://upload.wikimedia.org/wikipedia/en/d/db/Apex_legends_cover.jpg"
-);
-
-salvar(
-        "Call of Duty: Warzone",
-        "Battle Royale",
-        "Modo battle royale da franquia Call of Duty com combate intenso e frenético.",
-        8.6,
-        "https://upload.wikimedia.org/wikipedia/en/5/5e/COD_Warzone_cover.jpg"
-);
-
-salvar(
-        "Call of Duty: Modern Warfare III",
-        "FPS",
-        "Nova entrada da franquia Call of Duty focada em ação cinematográfica.",
-        8.1,
-        "https://upload.wikimedia.org/wikipedia/en/5/57/Call_of_Duty_Modern_Warfare_III_cover_art.jpg"
-);
-
-salvar(
-        "Battlefield 1",
-        "FPS de Guerra",
-        "Experiência intensa da Primeira Guerra Mundial com batalhas épicas.",
-        9.0,
-        "https://upload.wikimedia.org/wikipedia/en/2/26/Battlefield_1_cover_art.jpg"
-);
-
-salvar(
-        "Battlefield V",
-        "FPS de Guerra",
-        "Shooter ambientado na Segunda Guerra Mundial com grandes mapas multiplayer.",
-        8.5,
-        "https://upload.wikimedia.org/wikipedia/en/3/3f/Battlefield_V_Cover_Art.jpg"
-);
 
 salvar(
         "Stardew Valley",
@@ -261,13 +147,6 @@ salvar(
         "https://upload.wikimedia.org/wikipedia/en/f/fd/Logo_of_Stardew_Valley.png"
 );
 
-salvar(
-        "Terraria",
-        "Sandbox",
-        "Mistura de exploração, construção e combate em um vasto mundo 2D.",
-        9.2,
-        "https://upload.wikimedia.org/wikipedia/en/1/1b/Terraria_Steam_artwork.jpg"
-);
 
 salvar(
         "Among Us",
@@ -277,45 +156,7 @@ salvar(
         "https://upload.wikimedia.org/wikipedia/en/9/9a/Among_Us_cover_art.jpg"
 );
 
-salvar(
-        "Fall Guys",
-        "Party Game",
-        "Competições caóticas e divertidas inspiradas em programas de TV.",
-        7.9,
-        "https://upload.wikimedia.org/wikipedia/en/5/5c/Fall_Guys_cover.jpg"
-);
 
-salvar(
-        "Dying Light 2",
-        "Ação e Survival Horror",
-        "Sobreviva em uma cidade dominada por infectados utilizando parkour.",
-        8.2,
-        "https://upload.wikimedia.org/wikipedia/en/2/2f/Dying_Light_2_cover_art.jpg"
-);
-
-salvar(
-        "Far Cry 6",
-        "FPS e Mundo Aberto",
-        "Lidere uma revolução contra um ditador em uma ilha inspirada em Cuba.",
-        8.0,
-        "https://upload.wikimedia.org/wikipedia/en/3/35/Far_Cry_6_cover.jpg"
-);
-
-salvar(
-        "Assassin's Creed Valhalla",
-        "RPG de Ação",
-        "Viva como um guerreiro viking explorando a Inglaterra medieval.",
-        8.7,
-        "https://upload.wikimedia.org/wikipedia/en/f/f8/ACValhalla.jpg"
-);
-
-salvar(
-        "Assassin's Creed Mirage",
-        "Ação e Stealth",
-        "Retorno às raízes da franquia com foco em furtividade e parkour.",
-        8.4,
-        "https://upload.wikimedia.org/wikipedia/en/a/a5/Assassin%27s_Creed_Mirage_cover.jpg"
-);
 
 salvar(
         "Hades",
@@ -325,13 +166,6 @@ salvar(
         "https://upload.wikimedia.org/wikipedia/en/c/cc/Hades_cover_art.jpg"
 );
 
-salvar(
-        "Celeste",
-        "Plataforma",
-        "Uma emocionante jornada sobre superação e ansiedade escalando uma montanha.",
-        9.3,
-        "https://upload.wikimedia.org/wikipedia/en/9/9d/Celeste_box_art_final.png"
-);
 
 salvar(
         "Dead by Daylight",

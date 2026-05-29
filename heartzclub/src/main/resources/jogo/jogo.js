@@ -152,7 +152,7 @@ async function avaliarJogo() {
 
   if (!nota) return;
 
-  try {
+ 
 
     const response = await fetch(`${API_BASE}/avaliacoes`, {
 
@@ -172,19 +172,10 @@ async function avaliarJogo() {
 
     });
 
-    if (!response.ok) {
-      throw new Error();
-    }
+
 
     alert('Avaliação enviada!');
 
-  } catch (err) {
-
-    console.error(err);
-
-    alert('Erro ao avaliar.');
-
-  }
 
 }
 

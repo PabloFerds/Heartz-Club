@@ -106,7 +106,80 @@
   border-radius: 5px;
 }
 
+/* FAVORITOS */
 
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.game {
+    width: 180px;
+    list-style: none;
+}
+
+.game a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.game img {
+    width: 180px;
+    height: 240px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    border: 2px solid #c89b3c;
+
+    transition: 0.3s;
+}
+
+.game:hover img {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 15px rgba(200,155,60,0.5);
+}
+
+.game span {
+    margin-top: 10px;
+
+    color: white;
+
+    font-size: 16px;
+
+    text-align: center;
+
+    display: block;
+}
+
+/* MENSAGEM SEM FAVORITOS */
+
+.empty-message {
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #999;
+
+    font-size: 18px;
+
+    padding: 30px;
+
+    border: 2px dashed rgba(200,155,60,0.4);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,0.03);
+}
 
 /* ESTILIZAÇÃO DO MODO "PERSONALIZAR PERFIL"*/
 
@@ -209,4 +282,154 @@
   background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   border-color: #ffffff;
+}
+/* =======================================
+   FAVORITOS
+======================================= */
+
+.games {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    justify-content: flex-start;
+
+    align-items: flex-start;
+
+    list-style: none;
+
+    padding: 0;
+}
+
+.game {
+
+    width: 180px;
+
+    transition: 0.3s;
+}
+
+.game:hover {
+
+    transform: translateY(-5px);
+}
+
+.game a {
+
+    display: flex;
+
+    flex-direction: column;
+
+    text-decoration: none;
+
+    align-items: center;
+}
+
+.game img {
+
+    width: 180px;
+
+    height: 240px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    border: 2px solid #c89b3c;
+
+    transition: 0.3s;
+
+    background: #181818;
+}
+
+.game:hover img {
+
+    transform: scale(1.04);
+
+    box-shadow:
+        0 0 20px rgba(200,155,60,0.5);
+}
+
+.game span {
+
+    margin-top: 10px;
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    width: 100%;
+}
+
+/* =======================================
+   MENSAGEM VAZIA
+======================================= */
+
+.empty-message {
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #999;
+
+    font-size: 18px;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    border: 2px dashed rgba(200,155,60,0.4);
+
+    background:
+        rgba(255,255,255,0.03);
+}
+
+/* =======================================
+   RESPONSIVO
+======================================= */
+
+@media (max-width: 768px) {
+
+    .profile {
+
+        padding: 20px;
+    }
+
+    .profile__card {
+
+        flex-direction: column;
+
+        gap: 30px;
+    }
+
+    .profile__left {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .games {
+
+        justify-content: center;
+    }
+
+    .game {
+
+        width: 150px;
+    }
+
+    .game img {
+
+        width: 150px;
+
+        height: 210px;
+    }
 }

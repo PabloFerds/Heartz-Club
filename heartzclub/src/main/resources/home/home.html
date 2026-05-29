@@ -69,7 +69,6 @@
       const li      = document.createElement('li');
       li.className  = 'game';
 
-      // Lê diretamente o campo imagemUrl que vem no JSON da API
       const imgSrc  = jogo.imagemUrl || PLACEHOLDER_IMG;
       const titulo  = jogo.nome || 'Jogo';
       const jogoUrl = `${JOGO_PAGE}?id=${jogo.id}`;
@@ -112,12 +111,11 @@
 
         const jogos = await res.json();
 
-        // Popular → top 6 por mediaNotas decrescente
         const populares = [...jogos]
           .sort((a, b) => (b.mediaNotas ?? 0) - (a.mediaNotas ?? 0))
           .slice(0, 6);
 
-        // Lançamentos → 4 cadastrados mais recentemente (maior id)
+       
         const lancamentos = [...jogos]
           .sort((a, b) => b.id - a.id)
           .slice(0, 4);

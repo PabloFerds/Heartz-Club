@@ -2,21 +2,43 @@ async function cadastrar(event) {
 
     event.preventDefault();
 
-    const url = 'http://localhost:8080/api/usuarios/cadastro';
+    const url =
+        'http://localhost:8080/api/usuarios/cadastro';
 
-    const nome = document.getElementById('Nome').value.trim();
-    const email = document.getElementById('Email').value.trim();
-    const idade = document.getElementById('Idade').value.trim();
-    const cpf = document.getElementById('CPF').value.trim();
-    const endereco = document.getElementById('Endereco').value.trim();
-    const senha = document.getElementById('Senha').value.trim();
-    const confirmar = document.getElementById('Confirmar').value.trim();
+    const nome =
+        document.getElementById('Nome')
+        .value.trim();
+
+    const email =
+        document.getElementById('Email')
+        .value.trim();
+
+    const dataNascimento =
+        document.getElementById('DataNascimento')
+        .value;
+
+    const cpf =
+        document.getElementById('CPF')
+        .value
+        .replace(/\D/g, '');
+
+    const endereco =
+        document.getElementById('Endereco')
+        .value.trim();
+
+    const senha =
+        document.getElementById('Senha')
+        .value.trim();
+
+    const confirmar =
+        document.getElementById('Confirmar')
+        .value.trim();
 
     // VERIFICA CAMPOS VAZIOS
     if (
         nome === '' ||
         email === '' ||
-        idade === '' ||
+        dataNascimento === '' ||
         cpf === '' ||
         endereco === '' ||
         senha === '' ||
@@ -34,52 +56,90 @@ async function cadastrar(event) {
         return;
     }
 
+    // CALCULA IDADE
+    const hoje =
+        new Date();
+
+    const nascimento =
+        new Date(dataNascimento);
+
+    let idade =
+        hoje.getFullYear() -
+        nascimento.getFullYear();
+
+    const mes =
+        hoje.getMonth() -
+        nascimento.getMonth();
+
+    if (
+        mes < 0 ||
+        (
+            mes === 0 &&
+            hoje.getDate() <
+            nascimento.getDate()
+        )
+    ) {
+        idade--;
+    }
+
     // OBJETO ENVIADO PARA API
     const usuario = {
 
         nome,
         email,
-        idade: parseInt(idade),
+        idade,
         cpf,
         endereco,
         senha,
         confirmaSenha: confirmar
+
     };
 
     console.log(usuario);
 
     try {
 
-        const response = await fetch(url, {
+        const response =
+            await fetch(url, {
 
-            method: 'POST',
+                method: 'POST',
 
-            headers: {
-                'Content-Type': 'application/json'
-            },
+                headers: {
+                    'Content-Type':
+                        'application/json'
+                },
 
-            body: JSON.stringify(usuario)
-        });
+                body:
+                    JSON.stringify(usuario)
 
-        // SUCESSO
+            });
+
         if (response.ok) {
 
-            alert('Cadastro realizado com sucesso!');
+            alert(
+                'Cadastro realizado com sucesso!'
+            );
 
-            window.location.href = '../login/login.html';
+            window.location.href =
+                '../login/login.html';
 
         } else {
 
-            const erro = await response.text();
+            const erro =
+                await response.text();
 
-            console.error("ERRO BACKEND:");
+            console.error(
+                'ERRO BACKEND:'
+            );
 
             console.error(erro);
 
-            const erroJson = JSON.parse(erro);
+            const erroJson =
+                JSON.parse(erro);
 
             alert(
-                erroJson.errors[0].defaultMessage
+                erroJson.errors[0]
+                .defaultMessage
             );
         }
 
@@ -87,6 +147,49 @@ async function cadastrar(event) {
 
         console.error(error);
 
-        alert('Erro ao conectar com o servidor!');
+        alert(
+            'Erro ao conectar com o servidor!'
+        );
     }
 }
+
+/* MÁSCARA CPF */
+
+const cpfInput =
+    document.getElementById('CPF');
+
+cpfInput.addEventListener(
+    'input',
+    (e) => {
+
+        let valor =
+            e.target.value;
+
+        valor =
+            valor.replace(/\D/g, '');
+
+        valor =
+            valor.substring(0, 11);
+
+        valor =
+            valor.replace(
+                /(\d{3})(\d)/,
+                '$1.$2'
+            );
+
+        valor =
+            valor.replace(
+                /(\d{3})(\d)/,
+                '$1.$2'
+            );
+
+        valor =
+            valor.replace(
+                /(\d{3})(\d{1,2})$/,
+                '$1-$2'
+            );
+
+        e.target.value =
+            valor;
+    }
+);
